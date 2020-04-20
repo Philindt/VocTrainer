@@ -31,26 +31,25 @@ import model.Wort;
  */
 public class VokabelTrainerUI extends Application {
 
-	private static final String PREFIX = "Die Übersetzung war richtig! Nächstes Wort wurde zufällig ausgewählt";
-	private static final String PREFIX2 = "Die Übersetzung war falsch! Versuche es noch einmal!";
+	private static final String PREFIX = "Die ï¿½bersetzung war richtig! Nï¿½chstes Wort wurde zufï¿½llig ausgewï¿½hlt";
+	private static final String PREFIX2 = "Die ï¿½bersetzung war falsch! Versuche es noch einmal!";
 
 	// Erster Tab
 	private Parent root;
 	private Label titel;
-	private Label zuÜbersetzendesWort;
+	private Label zuï¿½bersetzendesWort;
 	private Label richtung;
 	private TextField eingabe;
-	private Button bestätigen;
-	private Button richtungÄndern;
+	private Button bestï¿½tigen;
+	private Button richtungï¿½ndern;
 	private Label feedback;
 	
 	// Zweiter Tab
 	private Label neuesWort;
 	private TextField deutsch;
 	private TextField englisch;
-	private Button hinzufügen;
+	private Button hinzufï¿½gen;
 	private Button speichern;
-	
 	
 	private WoerterBuch buch;
 	private WoerterBuchDAO dao;
@@ -80,46 +79,46 @@ public class VokabelTrainerUI extends Application {
 		
 		// ui controls Tab1
 		feedback = new Label("");
-		titel = new Label("Übersetze das Wort");
+		titel = new Label("ï¿½bersetze das Wort");
 
-		zuÜbersetzendesWort = new Label(buch.neuesWort(wort, sprachenIndex));
+		zuï¿½bersetzendesWort = new Label(buch.neuesWort(wort, sprachenIndex));
 
 		richtung = new Label("von Deutsch nach Englisch");
 
 		eingabe = new TextField();
-		eingabe.setPromptText("Übersetzung");
+		eingabe.setPromptText("ï¿½bersetzung");
 
-		bestätigen = new Button("Bestätigen");
-		bestätigen.setOnAction(event -> {
+		bestï¿½tigen = new Button("Bestï¿½tigen");
+		bestï¿½tigen.setOnAction(event -> {
 			if (buch.uebersetze(wort, eingabe.getText())) {
 				feedback.setText(PREFIX);
 				eingabe.clear();
 				wort = buch.zufaelligesWort();
-				zuÜbersetzendesWort.setText(buch.neuesWort(wort, sprachenIndex));
+				zuï¿½bersetzendesWort.setText(buch.neuesWort(wort, sprachenIndex));
 			} else {
 				feedback.setText(PREFIX2);
 				eingabe.clear();
 			}
 		});
 
-		richtungÄndern = new Button("Übersetzungsrichtung ändern");
-		richtungÄndern.setOnAction(event -> {
+		richtungï¿½ndern = new Button("ï¿½bersetzungsrichtung ï¿½ndern");
+		richtungï¿½ndern.setOnAction(event -> {
 			if(sprachenIndex == 0) {
 				sprachenIndex = 1;
 				wort = buch.zufaelligesWort();
-				zuÜbersetzendesWort.setText(buch.neuesWort(wort, sprachenIndex));
+				zuï¿½bersetzendesWort.setText(buch.neuesWort(wort, sprachenIndex));
 				richtung.setText("von Englisch nach Deutsch");
 			} else {
 				sprachenIndex = 0;
 				wort = buch.zufaelligesWort();
-				zuÜbersetzendesWort.setText(buch.neuesWort(wort, sprachenIndex));
+				zuï¿½bersetzendesWort.setText(buch.neuesWort(wort, sprachenIndex));
 				richtung.setText("von Deutsch nach Englisch");
 			}
 		});
 		
 		
 		// ui controls Tab2
-		neuesWort = new Label("Ein neues Wort in das Wörterbuch eintragen:");
+		neuesWort = new Label("Ein neues Wort in das Wï¿½rterbuch eintragen:");
 
 		deutsch = new TextField();
 		deutsch.setPromptText("Deutsch");
@@ -127,25 +126,25 @@ public class VokabelTrainerUI extends Application {
 		englisch = new TextField();
 		englisch.setPromptText("Englisch");
 
-		hinzufügen = new Button("Hinzufügen");
-		hinzufügen.setOnAction(event -> {
+		hinzufï¿½gen = new Button("Hinzufï¿½gen");
+		hinzufï¿½gen.setOnAction(event -> {
 			if (buch.wortHinzufuegen(deutsch.getText().trim(), englisch.getText().trim())) {
 				deutsch.clear();
 				englisch.clear();
-				showAlert("Eintrag im Wörterbuch erfolgreich hinzugefügt", AlertType.INFORMATION);
+				showAlert("Eintrag im Wï¿½rterbuch erfolgreich hinzugefï¿½gt", AlertType.INFORMATION);
 			} else {
-				showAlert("Eintrag für " + "[" + deutsch.getText().trim()+ "/" + englisch.getText().trim() +"]"
-						+ " im Wörterbuch bereits vorhanden", AlertType.ERROR);
+				showAlert("Eintrag fï¿½r " + "[" + deutsch.getText().trim()+ "/" + englisch.getText().trim() +"]"
+						+ " im Wï¿½rterbuch bereits vorhanden", AlertType.ERROR);
 				deutsch.clear();
 				englisch.clear();
 			}
 		});
 
-		speichern = new Button("Wörterbuch speichern");
+		speichern = new Button("Wï¿½rterbuch speichern");
 		speichern.setOnAction(event -> {		
 			try {
 				dao.updateBuch(buch);
-				showAlert("Wörterbuch erfolgreich aktualisiert", AlertType.INFORMATION);
+				showAlert("Wï¿½rterbuch erfolgreich aktualisiert", AlertType.INFORMATION);
 			} catch (IOException e) {
 				showAlert("Can't write to File!", AlertType.ERROR);
 				e.printStackTrace();
@@ -163,12 +162,12 @@ public class VokabelTrainerUI extends Application {
 		VBox root1 = new VBox();
 		root1.setSpacing(10);
 		root1.setPadding(new Insets(15, 20, 10, 10));
-		root1.getChildren().addAll(titel, zuÜbersetzendesWort, richtung, eingabe, bestätigen, richtungÄndern, feedback);
+		root1.getChildren().addAll(titel, zuï¿½bersetzendesWort, richtung, eingabe, bestï¿½tigen, richtungï¿½ndern, feedback);
 
 		VBox root2 = new VBox();
 		root2.setSpacing(10);
 		root2.setPadding(new Insets(15, 20, 10, 10));
-		root2.getChildren().addAll(neuesWort, deutsch, englisch, hinzufügen, speichern);
+		root2.getChildren().addAll(neuesWort, deutsch, englisch, hinzufï¿½gen, speichern);
 
 		TabPane pane = new TabPane();
 
@@ -176,7 +175,7 @@ public class VokabelTrainerUI extends Application {
 		tab1.setContent(root1);
 		pane.getTabs().add(tab1);
 
-		Tab tab2 = new Tab("Wörterbuch");
+		Tab tab2 = new Tab("Wï¿½rterbuch");
 		tab2.setContent(root2);
 		pane.getTabs().add(tab2);
 
@@ -196,10 +195,10 @@ public class VokabelTrainerUI extends Application {
 	}
 	
 	/**
-	 * Abfragefenster zum Programmschließen
+	 * Abfragefenster zum Programmschlieï¿½en
 	 * @throws Exception
 	 */
-	public void programmSchließen() throws Exception {
+	public void programmSchlieï¿½en() throws Exception {
 		Alert alert = new Alert(AlertType.CONFIRMATION, "Wortschatzsicherung");
 
 		alert.showAndWait().ifPresent(response -> {
@@ -228,7 +227,7 @@ public class VokabelTrainerUI extends Application {
 		primaryStage.setOnCloseRequest(event -> {
 			event.consume();
 			try {
-				programmSchließen();
+				programmSchlieï¿½en();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

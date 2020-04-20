@@ -21,10 +21,10 @@ public class WoerterBuch implements Serializable{
 	}
 
 	/**
-	 * Fügt Wort der Liste hinzu, prüft davor, ob das Wort bereits vorhanden ist
+	 * Fï¿½gt Wort der Liste hinzu, prï¿½ft davor, ob das Wort bereits vorhanden ist
 	 * @param german
 	 * @param english
-	 * @return true falls Wort hinzugefügt wurde, ansonsten false
+	 * @return true falls Wort hinzugefï¿½gt wurde, ansonsten false
 	 */
 	public boolean wortHinzufuegen(String german, String english) {
 		if (german.length() <= 1 || english.length() <= 1) {
@@ -42,7 +42,7 @@ public class WoerterBuch implements Serializable{
 	}
 
 	/**
-	 * Zufälliges Objekt der Klasse Wort wird für die Übersetzung erzeugt
+	 * Zufï¿½lliges Objekt der Klasse Wort wird fï¿½r die ï¿½bersetzung erzeugt
 	 * @return Wort
 	 */
 	public Wort zufaelligesWort() {
@@ -52,7 +52,7 @@ public class WoerterBuch implements Serializable{
 	}
 	
 	/**
-	 * gibt zur Übersetzung entweder das englische oder das deutsche Wort zurück
+	 * gibt zur ï¿½bersetzung entweder das englische oder das deutsche Wort zurï¿½ck
 	 * @param wort
 	 * @param index
 	 * @return String deutsches oder englisches Wort
@@ -66,7 +66,7 @@ public class WoerterBuch implements Serializable{
 	}
 
 	/**
-	 * Prüft ob die Übersetzung richtig oder falsch ist
+	 * Prï¿½ft ob die ï¿½bersetzung richtig oder falsch ist
 	 * @param wort
 	 * @param s
 	 * @return true oder false
@@ -96,6 +96,4 @@ public class WoerterBuch implements Serializable{
 		this.wortHinzufuegen("Bleistift", "Pencil");
 	}
 	
-	
-
 }
