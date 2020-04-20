@@ -18,7 +18,6 @@ public class WoerterBuchDAOImpl implements WoerterBuchDAO {
 
 	private File file;
 	
-
 	public WoerterBuchDAOImpl(String fileName) {
 		this.file = new File(fileName);
 	}
@@ -40,7 +39,7 @@ public class WoerterBuchDAOImpl implements WoerterBuchDAO {
 	@Override
 	public WoerterBuch readBuch() throws IOException {
 		if (!file.exists()) {
-			throw new IOException("Wörterbuch existiert nicht");
+			throw new IOException("Wï¿½rterbuch existiert nicht");
 		} else {
 			FileInputStream in = new FileInputStream(file);
 			ObjectInputStream obin = new ObjectInputStream(in);
