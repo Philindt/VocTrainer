@@ -2,4 +2,4 @@
 ## Train your vocabulary
 ### From english to german and from german to english
 
-very simple ui
+very simple program & ui
